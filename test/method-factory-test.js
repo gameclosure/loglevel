@@ -9,16 +9,17 @@ define(['test/test-helpers'], function(testHelpers) {
             log.methodFactory = jasmine.createSpy("methodFactory");
 
             log.setLevel("trace");
-            expect(log.methodFactory.calls.length).toEqual(5);
+            expect(log.methodFactory.calls.length).toEqual(6);
             expect(log.methodFactory.argsForCall[0]).toEqual(["trace", 0, undefined]);
             expect(log.methodFactory.argsForCall[1]).toEqual(["debug", 0, undefined]);
             expect(log.methodFactory.argsForCall[2]).toEqual(["info",  0, undefined]);
-            expect(log.methodFactory.argsForCall[3]).toEqual(["warn",  0, undefined]);
-            expect(log.methodFactory.argsForCall[4]).toEqual(["error", 0, undefined]);
+            expect(log.methodFactory.argsForCall[3]).toEqual(["log",  0, undefined]);
+            expect(log.methodFactory.argsForCall[4]).toEqual(["warn",  0, undefined]);
+            expect(log.methodFactory.argsForCall[5]).toEqual(["error", 0, undefined]);
 
             log.setLevel("error");
-            expect(log.methodFactory.calls.length).toEqual(6);
-            expect(log.methodFactory.argsForCall[5]).toEqual(["error", 4, undefined]);
+            expect(log.methodFactory.calls.length).toEqual(7);
+            expect(log.methodFactory.argsForCall[6]).toEqual(["error", 5, undefined]);
         });
 
         it("functions returned by methodFactory should be used as logging functions", function(log) {
@@ -35,7 +36,7 @@ define(['test/test-helpers'], function(testHelpers) {
             logger.methodFactory = jasmine.createSpy("methodFactory");
 
             logger.setLevel("error");
-            expect(logger.methodFactory.argsForCall[0]).toEqual(["error", 4, "newLogger"]);
+            expect(logger.methodFactory.argsForCall[0]).toEqual(["error", 5, "newLogger"]);
         });
 
     });

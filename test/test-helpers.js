@@ -8,6 +8,7 @@ var logMethods = [
     "trace",
     "debug",
     "info",
+    "log",
     "warn",
     "error"
 ];
